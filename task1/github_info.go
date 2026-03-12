@@ -55,8 +55,8 @@ func main() {
 }
 
 func printUsage() {
-	fmt.Println("Usage (from task1/src): go run github_info.go <owner> <repo>")
-	fmt.Println("Sample: github_info.go golang go")
+	fmt.Println("Usage (from task1): github_info <owner> <repo>")
+	fmt.Println("Sample: github_info golang go")
 }
 
 func printRepositoryInfo(repo Repository) {
