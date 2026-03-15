@@ -68,6 +68,7 @@ func printRepositoryInfo(repo Repository) {
 	fmt.Printf("Forks:\t\t%d\n", repo.Forks)
 	fmt.Printf("Creation date:\t%s\n", repo.CreatedAt.Format("02.01.2006 15:04"))
 }
+
 func getDescription(desc string) string {
 	if desc == "" {
 		return "<no description>"
