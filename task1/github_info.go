@@ -16,6 +16,22 @@ type Repository struct {
 	CreatedAt   time.Time `json:"created_at"`
 }
 
+func (r Repository) String() string {
+	desc := r.Description
+	if desc == "" {
+		desc = "<no description>"
+	}
+
+	return fmt.Sprintf("\nRepository information:\n"+
+		"\n"+
+		"Name:\t\t%s\n"+
+		"Description:\t%s\n"+
+		"Stars:\t\t%d\n"+
+		"Forks:\t\t%d\n"+
+		"Creation date:\t%s",
+		r.Name, desc, r.Stars, r.Forks, r.CreatedAt.Format("02.01.2006 15:04"))
+}
+
 func main() {
 	if len(os.Args) != 3 {
 		printUsage()
@@ -51,27 +67,10 @@ func main() {
 		os.Exit(1)
 	}
 
-	printRepositoryInfo(repository)
+	fmt.Println(repository)
 }
 
 func printUsage() {
 	fmt.Println("Usage (from task1): github_info <owner> <repo>")
 	fmt.Println("Sample: github_info golang go")
-}
-
-func printRepositoryInfo(repo Repository) {
-	fmt.Println("\nRepository information:")
-	fmt.Println("")
-	fmt.Printf("Name:\t\t%s\n", repo.Name)
-	fmt.Printf("Description:\t%s\n", getDescription(repo.Description))
-	fmt.Printf("Stars:\t\t%d\n", repo.Stars)
-	fmt.Printf("Forks:\t\t%d\n", repo.Forks)
-	fmt.Printf("Creation date:\t%s\n", repo.CreatedAt.Format("02.01.2006 15:04"))
-}
-
-func getDescription(desc string) string {
-	if desc == "" {
-		return "<no description>"
-	}
-	return desc
 }
