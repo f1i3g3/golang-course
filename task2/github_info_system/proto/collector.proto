@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package collector;
+
+option go_package = "./;collector";
+
+// CollectorService provides methods for retrieving GitHub repository information
+service CollectorService {
+  // GetRepositoryInfo returns information about a repository by owner and repo name
+  rpc GetRepositoryInfo(RepoRequest) returns (RepoResponse) {}
+}
+
+// RepoRequest contains parameters for requesting repository information
+message RepoRequest {
+  string owner = 1; // Repository owner (e.g., "golang")
+  string repo = 2; // Repository name (e.g., "go")
+}
+
+// RepoResponse contains information about a repository
+message RepoResponse {
+  string name = 1; // Repository name
+  string description = 2; // Repository description
+  int32 stars = 3; // Number of stars
+  int32 forks = 4; // Number of forks
+  string created_at = 5; // Creation date in RFC3339 format (e.g., "2014-08-19T04:33:40Z")
+}

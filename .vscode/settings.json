@@ -1,0 +1,5 @@
+{
+    "protobuf.externalLinter.enabled": true,
+    "protobuf.externalLinter.linter": "protolint",
+    "protobuf.externalLinter.protolintPath": "/home/f1i3g3/go/bin/protolint"
+}
